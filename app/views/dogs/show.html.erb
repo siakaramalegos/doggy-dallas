@@ -38,5 +38,9 @@
   <%= @dog.dietary_restriction %>
 </p>
 
+<%= image_tag @dog.avatar.url %>
+<%= image_tag @dog.avatar.url(:medium) %>
+<%= image_tag @dog.avatar.url(:thumb) %>
+
 <%= link_to 'Edit', edit_dog_path(@dog) %> |
 <%= link_to 'Back', dogs_path %>
