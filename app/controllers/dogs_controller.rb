@@ -52,12 +52,16 @@ class DogsController < ApplicationController
   # PATCH/PUT /dogs/1
   # PATCH/PUT /dogs/1.json
   def update
+    @dogs = Dog.all
+
     respond_to do |format|
       if @dog.update(dog_params)
         format.html { redirect_to dogs_path, notice: 'Dog was successfully updated.' }
+        format.js {}
         format.json { render :show, status: :ok, location: @dog }
       else
         format.html { render :edit }
+        format.js { render :action => "edit" }
         format.json { render json: @dog.errors, status: :unprocessable_entity }
       end
     end
