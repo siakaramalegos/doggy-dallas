@@ -50,6 +50,7 @@
     <%= f.file_field :avatar %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", :back, {:class => "btn btn-default"} %>
   </div>
 <% end %>
