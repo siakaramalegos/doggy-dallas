@@ -37,6 +37,7 @@ gem 'starter_generators'
 gem 'awesome_print'
 gem 'stamp'
 gem "paperclip", "~> 4.2"
+gem 'font-awesome-rails'
 
 # Quiet assets only in development
 gem 'quiet_assets', group: :development

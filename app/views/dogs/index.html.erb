@@ -2,32 +2,38 @@
 
 <h1>Listing Dogs</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Last</th>
-      <th>In daycare</th>
-      <th>Dietary restriction</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
     <% @dogs.each do |dog| %>
-      <tr>
-        <td><%= dog.name %></td>
-        <td><%= dog.owner.last_name %></td>
-        <td><%= dog.in_daycare %></td>
-        <td><%= dog.dietary_restriction %></td>
-        <td><%= link_to 'Show', dog %></td>
-        <td><%= link_to 'Edit', edit_dog_path(dog) %></td>
-        <td><%= link_to 'Destroy', dog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-md-3">
+        <div class="panel panel-default <%= 'panel-success' if dog.in_daycare %> ">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= dog.name %> <%= dog.owner.last_name %></h3>
+          </div>
+          <div class="panel-body">
+            <%= image_tag dog.avatar.url(:medium), class: "img-responsive" %>
+          </div>
+          <div class="panel-footer">
+            In Daycare? <%= dog.in_daycare %>
 
+            <%= link_to dog do %>
+              <%= fa_icon 'eye' %>
+            <% end %>
+
+            <%= link_to edit_dog_path(dog) do %>
+              <%= fa_icon 'pencil' %>
+            <% end %>
+
+            <%= link_to dog, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= fa_icon 'trash-o' %>
+            <% end %>
+
+            </div>
+        </div> <!-- panel -->
+      </div> <!-- col -->
+    <% end %>
+
+</div> <!-- row -->
 <br>
 
-<%= link_to 'New Dog', new_dog_path %>
+<%= link_to 'New Dog', new_dog_path, class: "btn btn-default" %>
