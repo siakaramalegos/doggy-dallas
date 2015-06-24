@@ -1,0 +1,34 @@
+<div class="col-md-3">
+  <div class="panel panel-default <%= 'panel-success' if dog.in_daycare %> ">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= dog.name %> <%= dog.owner.last_name %></h3>
+    </div>
+    <div class="panel-body">
+      <%= image_tag dog.avatar.url(:medium), class: "img-responsive" %>
+    </div>
+    <div class="panel-footer">
+      <%= form_for(dog, url: dog_path(dog), :html => {class: "form-inline"}) do |f| %>
+        <% if dog.in_daycare %>
+          <%= f.hidden_field :in_daycare, :value => false %>
+          <%= f.submit "Check out", class: "btn btn-default btn-xs" %>
+        <% else %>
+          <%= f.hidden_field :in_daycare, :value => true %>
+          <%= f.submit "Check in", class: "btn btn-default btn-xs" %>
+        <% end %>
+      <% end %>
+
+      <%= link_to dog do %>
+        <%= fa_icon 'eye' %>
+      <% end %>
+
+      <%= link_to edit_dog_path(dog) do %>
+        <%= fa_icon 'pencil' %>
+      <% end %>
+
+      <%= link_to dog, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= fa_icon 'trash-o' %>
+      <% end %>
+
+      </div>
+  </div> <!-- panel -->
+</div> <!-- col -->

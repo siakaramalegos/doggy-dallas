@@ -1,4 +1,5 @@
-<%= form_for(@dog) do |f| %>
+<br>
+<%= form_for(@dog, remote: true) do |f| %>
   <% if @dog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
