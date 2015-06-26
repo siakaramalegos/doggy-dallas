@@ -4,7 +4,9 @@
       <h3 class="panel-title"><%= dog.name %> <%= dog.owner.last_name %></h3>
     </div>
     <div class="panel-body">
-      <%= image_tag dog.avatar.url(:medium), class: "img-responsive" %>
+      <a href="#" data-toggle="modal" data-target="#show_dog_<%= dog.id %>">
+        <%= image_tag dog.avatar.url(:medium), class: "img-responsive" %>
+      </a>
     </div>
     <div class="panel-footer">
       <%= form_for(dog, url: dog_path(dog), remote: true, :html => {class: "form-inline"}) do |f| %>
@@ -32,3 +34,36 @@
       </div>
   </div> <!-- panel -->
 </div> <!-- col -->
+
+<!-- Modal -->
+<div class="modal fade" id="show_dog_<%= dog.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel"><%= dog.name %> <%= dog.owner.last_name %></h2>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-4">
+              <%= image_tag dog.avatar.url(:medium), class: "img-responsive" %>
+            </div>
+            <div class="col-sm-8">
+
+              <p><strong>Owner:</strong> <%= "#{dog.owner.first_name} #{dog.owner.last_name}" %></p>
+
+              <p><strong>Breed:</strong> <%= dog.breed.breed %></p>
+              <p><strong>Date of Birth:</strong> <%= dog.dob.stamp_like('June 1, 2015') %></p>
+              <p><strong>Vet:</strong> <%= dog.vet %></p>
+              <p><strong>Vet phone:</strong> <%= dog.vet_phone %></p>
+              <p><strong>In daycare:</strong> <%= dog.in_daycare %></p>
+              <p><strong>Dietary restriction:</strong> <%= dog.dietary_restriction %></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
