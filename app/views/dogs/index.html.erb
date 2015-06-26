@@ -1,7 +1,7 @@
-<h1>Listing Dogs</h1>
-
-<%= link_to 'New Dog', new_dog_path, remote: true, class: "btn btn-default btn-sm" %>
-<div id="dog-form"></div>
+<h1>Our Dogs</h1>
+<p>
+  <%= link_to 'New Dog', new_dog_path, remote: true, class: "btn btn-default btn-sm" %>
+</p>
 
 <div class="row">
 
@@ -10,3 +10,16 @@
   </div>
 
 </div> <!-- row -->
+
+<!-- Modal -->
+<div class="modal fade" id="dog_form_modal" tabindex="-1" role="dialog" aria-labelledby="dogFormModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Dog Details</h3>
+      </div>
+      <div id="dog-form"></div>
+    </div>
+  </div>
+</div>
